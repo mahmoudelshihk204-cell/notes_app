@@ -11,7 +11,7 @@ class EditeNotesScreenBody extends StatelessWidget {
       child: Column(
         children: [
           
-          CustomAppBar(title: 'Note App', icon: Icons.check, ),
+          CustomAppBar(title: 'Edit Note', icon: Icons.check, ),
         ],
       ),
     );
