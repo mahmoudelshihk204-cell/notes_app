@@ -14,7 +14,7 @@ class NotesScreenBody extends StatelessWidget {
       padding: const EdgeInsets.only(top: 50),
       child: Column(
         children: [
-          CustomAppBar(title: 'Note App',),
+          CustomAppBar(title: 'Note App',icon: Icons.search,),
           Expanded(child: NotesList()),
         ],
       ),
