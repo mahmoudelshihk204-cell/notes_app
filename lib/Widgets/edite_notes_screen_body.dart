@@ -12,11 +12,17 @@ class EditeNotesScreenBody extends StatelessWidget {
         padding: const EdgeInsets.only(top: 50),
         child: Column(
           children: [
-            
             CustomAppBar(title: 'Edit Note', icon: Icons.check, ),
-            CustomTextField(hint: 'Title'),
-            SizedBox(height: 20,),
-            CustomTextField(hint: 'Content',)
+            SizedBox(height: 30,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: CustomTextField(hint: 'Title'),
+            ),
+            SizedBox(height: 30,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: CustomTextField(hint: 'Content', maxLines: 10,),
+            )
           ],
         ),
       ),
