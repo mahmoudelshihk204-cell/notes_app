@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/Widgets/add_notes_bottom_sheet.dart';
 import 'package:note_app/Widgets/notes_screen_body.dart';
-import 'package:note_app/cubits/cubit/notes_cubit.dart';
+import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
 
 
 class HomeScreen extends StatelessWidget {

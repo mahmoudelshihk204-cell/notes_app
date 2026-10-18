@@ -9,12 +9,11 @@ part 'notes_state.dart';
 class NotesCubit extends Cubit<NotesState> {
   NotesCubit() : super(NotesInitial());
 
-  dynamic addNote(NoteModel note) async {
+  dynamic fitchAllNotes() {
     emit(NotesLoading());
     try {
       var notebox = Hive.box<NoteModel>(kNotesBox);
       List<NoteModel> notes = notebox.values.toList();
-      
       emit(NotesSccusse(notes));
     } catch (e) {
       emit(NotesFailure(e.toString()));
