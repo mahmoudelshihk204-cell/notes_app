@@ -1,3 +1,5 @@
+// ignore_for_file: strict_top_level_inference
+
 import 'package:bloc/bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
@@ -9,14 +11,12 @@ part 'notes_state.dart';
 class NotesCubit extends Cubit<NotesState> {
   NotesCubit() : super(NotesInitial());
 
-  dynamic fitchAllNotes() {
-    emit(NotesLoading());
-    try {
-      var notebox = Hive.box<NoteModel>(kNotesBox);
-      List<NoteModel> notes = notebox.values.toList();
-      emit(NotesSccusse(notes));
-    } catch (e) {
-      emit(NotesFailure(e.toString()));
-    }
+  List<NoteModel>? notes;
+  fitchAllNotes() {
+    
+
+    var notebox = Hive.box<NoteModel>(kNotesBox);
+     notes = notebox.values.toList();
+    
   }
 }
