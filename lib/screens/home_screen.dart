@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 120, 157, 157),
         onPressed: () {
           showModalBottomSheet(
+            isScrollControlled: true,
             shape:RoundedRectangleBorder(
               borderRadius: BorderRadiusGeometry.circular(20)
             ),
