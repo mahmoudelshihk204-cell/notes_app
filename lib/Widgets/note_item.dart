@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/models/note_model.dart';
 import 'package:note_app/screens/edite_notes_screen.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
-
+  const NoteItem({super.key, required this.note});
+   final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,13 +33,13 @@ class NoteItem extends StatelessWidget {
                 ListTile(
                   textColor: Colors.black,
                   title: Text(
-                    'First Note',
+                    note.title,
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                   subtitle: Padding(
                     padding: const EdgeInsets.only(top: 12, bottom: 12),
                     child: Text(
-                      'Mahmoud youry flutter engineer',
+                      note.content,
                       style: TextStyle(
                         fontSize: 18,
                         color: const Color.fromARGB(255, 85, 84, 84),
@@ -53,8 +54,8 @@ class NoteItem extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 35),
                   child: Text(
-                    'Oct09 - 2026',
-                    style: TextStyle(
+                    note.date,
+                                        style: TextStyle(
                       fontSize: 15,
                       color: const Color.fromARGB(255, 85, 84, 84),
                     ),
