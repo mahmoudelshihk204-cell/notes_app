@@ -4,22 +4,22 @@ import 'package:note_app/screens/edite_notes_screen.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({super.key, required this.note});
-   final NoteModel note;
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: GestureDetector(
-         onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return EditeNotesScreen();
-            },
-          ),
-        );
-      },
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return EditeNotesScreen();
+              },
+            ),
+          );
+        },
         child: Container(
           decoration: BoxDecoration(
             color: Color(note.color),
@@ -47,7 +47,9 @@ class NoteItem extends StatelessWidget {
                     ),
                   ),
                   trailing: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      note.delete();
+                    },
                     icon: Icon(Icons.delete, color: Colors.black, size: 35),
                   ),
                 ),
@@ -55,7 +57,7 @@ class NoteItem extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 35),
                   child: Text(
                     note.date,
-                      style: TextStyle(
+                    style: TextStyle(
                       fontSize: 15,
                       color: const Color.fromARGB(255, 85, 84, 84),
                     ),
