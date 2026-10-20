@@ -41,6 +41,7 @@ dependencies:
   flutter_bloc: ^9.1.1
   meta: ^1.18.0
   bloc: ^9.2.1
+  intl: ^0.20.3
   
 
 

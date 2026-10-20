@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:note_app/Widgets/custom_bottom.dart';
 import 'package:note_app/Widgets/custom_text_field.dart';
 import 'package:note_app/cubits/add_note_cubit/add_note_cubit.dart';
@@ -18,6 +19,7 @@ class _NoteFormState extends State<NoteForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? title, subTitle;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -44,24 +46,32 @@ class _NoteFormState extends State<NoteForm> {
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CustomBotton(
-                      isloading: state is AddNoteLoading ? true : false,
-                      bottonName: 'Add',
-                      ontap: () {
-                        if (formKey.currentState!.validate()) {
-                          formKey.currentState!.save();
-                          var noteModel = NoteModel(
-                            title: title!,
-                            content: subTitle!,
-                            date: DateTime.now().toString(),
-                            color: const Color.fromARGB(255, 251, 161, 155).toARGB32(),
-                          );
-                          BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
-                        } else {
-                          autovalidateMode = AutovalidateMode.always;
-                          setState(() {});
-                        }
-                      },
+                isloading: state is AddNoteLoading ? true : false,
+                bottonName: 'Add',
+                ontap: () {
+                  if (formKey.currentState!.validate()) {
+                    formKey.currentState!.save();
+                    final String formattedDate = DateFormat(
+                      'dd/MM/yyyy hh:mm a',
+                    ).format(DateTime.now());
+                    var noteModel = NoteModel(
+                      title: title!,
+                      content: subTitle!,
+                      date: formattedDate,
+                      color: const Color.fromARGB(
+                        255,
+                        251,
+                        161,
+                        155,
+                      ).toARGB32(),
                     );
+                    BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+                  } else {
+                    autovalidateMode = AutovalidateMode.always;
+                    setState(() {});
+                  }
+                },
+              );
             },
           ),
           const SizedBox(height: 30),
