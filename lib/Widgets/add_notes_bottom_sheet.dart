@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:note_app/Widgets/note_form.dart';
 import 'package:note_app/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
 
 class AddNotesBottomSheet extends StatelessWidget {
   const AddNotesBottomSheet({super.key});
@@ -17,9 +18,8 @@ class AddNotesBottomSheet extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: BlocConsumer<AddNoteCubit, AddNoteState>(
           listener: (context, state) {
-            if (state is AddNoteFailure) {
-              print('failiar ${state.errMessage}');
-            } else if (state is AddNoteSccusse) {
+             if (state is AddNoteSccusse) {
+              BlocProvider.of<NotesCubit>(context).fitchAllNotes();
               Navigator.pop(context);
             }
           },
