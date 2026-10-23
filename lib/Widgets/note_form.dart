@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:note_app/Widgets/color_item.dart';
 import 'package:note_app/Widgets/color_list_view.dart';
 import 'package:note_app/Widgets/custom_bottom.dart';
 import 'package:note_app/Widgets/custom_text_field.dart';
